@@ -39,13 +39,13 @@ public class General_Window extends javax.swing.JFrame {
     }
 
     public void bloquear() {
-        jButton1.setEnabled(false);
-        jToggleButton1.setEnabled(false);
+        btnVerMatriz.setEnabled(false);
+        btnGenerarHilera.setEnabled(false);
     }
 
     public void desbloquear() {
-        jButton1.setEnabled(true);
-        jToggleButton1.setEnabled(true);
+        btnVerMatriz.setEnabled(true);
+        btnGenerarHilera.setEnabled(true);
     }
 
     //Generar Codigo
@@ -57,10 +57,10 @@ public class General_Window extends javax.swing.JFrame {
         btnCargar = new javax.swing.JButton();
         txtGeneral = new java.awt.TextArea();
         txtpath = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jLabel2 = new javax.swing.JLabel();
+        btnVerMatriz = new javax.swing.JButton();
+        btnInteractivo = new javax.swing.JButton();
+        btnGenerarHilera = new javax.swing.JToggleButton();
+        lblName = new javax.swing.JLabel();
         lbl_Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,32 +91,32 @@ public class General_Window extends javax.swing.JFrame {
         });
         getContentPane().add(txtpath, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 340, 40));
 
-        jButton1.setText("Ver Matriz");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVerMatriz.setText("Ver Matriz");
+        btnVerMatriz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVerMatrizActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 140, 40));
+        getContentPane().add(btnVerMatriz, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 140, 40));
 
-        jButton2.setText("Interactivo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnInteractivo.setText("Interactivo");
+        btnInteractivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnInteractivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 140, 40));
+        getContentPane().add(btnInteractivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 140, 40));
 
-        jToggleButton1.setText("Generar ilera");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerarHilera.setText("Generar Hilera");
+        btnGenerarHilera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnGenerarHileraActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 140, 40));
+        getContentPane().add(btnGenerarHilera, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 140, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Automata De Pila.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 600, 140));
+        lblName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Automata De Pila.png"))); // NOI18N
+        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 600, 140));
 
         lbl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Blue.png"))); // NOI18N
         getContentPane().add(lbl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 710));
@@ -143,30 +143,30 @@ public class General_Window extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtpathActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVerMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerMatrizActionPerformed
         Ver_Matriz_Window mg = new Ver_Matriz_Window(archivo, this); // Declarar Matriz Generada
         mg.setVisible(true);  // Mostrar Matriz Generada
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVerMatrizActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void btnGenerarHileraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarHileraActionPerformed
         Pila_Window p = new Pila_Window(archivo.getExpresion().getOperacion());
         p.setVisible(true);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_btnGenerarHileraActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnInteractivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInteractivoActionPerformed
        Interactivo_Window inte = new Interactivo_Window();
        inte.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnInteractivoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargar;
     private javax.swing.JButton btnGenerar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton btnGenerarHilera;
+    private javax.swing.JButton btnInteractivo;
+    private javax.swing.JButton btnVerMatriz;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lbl_Fondo;
     private java.awt.TextArea txtGeneral;
     private javax.swing.JTextField txtpath;

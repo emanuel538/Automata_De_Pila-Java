@@ -7,8 +7,16 @@ package Vista;
 
 import Control.ArchivoC;
 import Control.Utilidades;
+import java.awt.Component;
 import java.awt.event.ItemEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,6 +28,7 @@ public class Ver_Matriz_Window extends javax.swing.JFrame {
     private ArchivoC archivo;
     private DefaultTableModel modelo;
     private JFrame t;
+    private BufferedImage imagen; // Creacion de la imagen
 
     public Ver_Matriz_Window(ArchivoC c, JFrame t) {
         initComponents();
@@ -53,7 +62,7 @@ public class Ver_Matriz_Window extends javax.swing.JFrame {
         for (int i = 0; i < simbolos.length(); i++) {
             modelo.addColumn(simbolos.charAt(i));
         }
-        this.jTable1.setModel(modelo);
+        this.table1.setModel(modelo);
     }
 
     /**
@@ -66,8 +75,9 @@ public class Ver_Matriz_Window extends javax.swing.JFrame {
     private void initComponents() {
 
         jComboBox1 = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scrollpanel1 = new javax.swing.JScrollPane();
+        table1 = new javax.swing.JTable();
+        btnFoto = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -81,7 +91,7 @@ public class Ver_Matriz_Window extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 190, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -92,12 +102,20 @@ public class Ver_Matriz_Window extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        scrollpanel1.setViewportView(table1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, 320));
+        getContentPane().add(scrollpanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, 320));
+
+        btnFoto.setText("Foto");
+        btnFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFotoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, 80, 40));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Blue.png"))); // NOI18N
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 550));
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,14 +129,45 @@ public class Ver_Matriz_Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
+    private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
+        imagen = screenImagen(scrollpanel1);
+        // seleccionar la carpeta donde guardaremos la imagen
+        JFileChooser jfc = new JFileChooser();
+        jfc.setCurrentDirectory(new File("c:\\"));
+        jfc.setFileFilter(new FileNameExtensionFilter("Imagen Png", "png"));
+        int retorno = jfc.showSaveDialog(this);
+        jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        if (retorno == JFileChooser.APPROVE_OPTION) {
+            try {
+                File sfile = new File(jfc.getSelectedFile() + ".png");
+                ImageIO.write(imagen, "png", sfile);
+                JOptionPane.showMessageDialog(this, "Screenshot generado con exito");
+            } catch (IOException ioe) {
+                System.out.println("write: " + ioe.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnFotoActionPerformed
+
+    // Funcion para tomar pantallazo de un componente
+    public static BufferedImage screenImagen(Component componente) {
+
+        BufferedImage image = new BufferedImage(componente.getWidth(),
+                componente.getHeight(), BufferedImage.TYPE_INT_RGB);
+        // call the Component's paint method, using
+        // the Graphics object of the image.
+        componente.paint(image.getGraphics()); // alternately use .printAll(..)
+        return image;
+    }
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFoto;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JScrollPane scrollpanel1;
+    private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
 }
