@@ -1,0 +1,24 @@
+{
+	"Simbolos de entrada":["0","1","&"],
+	"Simbolos en la pila":["0";"?"],
+	"Estados":[
+		{
+		"nombre":"S0",
+		"incial":true,
+		"transiciones":[#1,#2,R;#1,R,R]
+		},
+		{
+		"nombre":"S1",
+		"incial":false,
+		"transiciones":[R,#3,R;R,R,A]
+		}
+	],
+	"Configuracion Inicial":["?"],
+	"Transiciones":{
+		"#1":["apile("0"),"permanezca","avance"],
+		"#2":["desapile","cambia S1","avance"],
+		"#3":["desapile","permanezca","avance"],
+		"R":["Rechace"],
+		"A":["Acepte"]
+	}
+}

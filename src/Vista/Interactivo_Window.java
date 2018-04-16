@@ -1,0 +1,254 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Vista;
+
+import Control.Utilidades;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.text.Text;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+public class Interactivo_Window extends javax.swing.JFrame {
+
+    public String simboloEntrada;
+    public String simboloSalida;
+    public String configuracionInicial;
+    public String transicion;
+
+    
+    //Constructor De La Clase Principal
+    public Interactivo_Window() {
+        initComponents();
+    }
+
+    //Funcion Para Poner Los Simbolos De Entrada Y De La Pila y Convertir String en String con Comilla
+    public String simboloDeEntradayPila(String texto, String Simbolo) {
+        String Entrada = texto;
+        String palabrasinespacio = "";
+        String frase = "";
+
+        // Quitamos Espacios En Blanco
+        for (int i = 0; i < Entrada.length(); i++) {
+            if (Entrada.charAt(i) != ' ') {
+                palabrasinespacio += Entrada.charAt(i);
+            }
+        }
+
+        for (int i = 0; i < palabrasinespacio.length(); i++) {
+            frase += ("\"" + palabrasinespacio.charAt(i) + "\",");
+        }
+        frase = frase.substring(0, (frase.length() - 1));
+        Simbolo = frase;
+
+        return Simbolo;
+    }
+
+    // Funcion Para Poner Los Estados
+    public void Estados(BufferedWriter salida, int Estados) throws IOException {
+        String transiciones;
+        String inicial;
+        for (int i = 0; i < Estados; i++) {
+            salida.newLine(); // Salto De Linea
+            salida.write("{");
+            salida.newLine(); // Salto De Linea
+            salida.write("\"nombre\":\"S" + i + "\",");
+            salida.newLine(); // Salto De Linea
+            Object[] opciones = {"True", "False"};
+            int eleccion = JOptionPane.showOptionDialog(null, ("Estado Inicial S" + i),
+                    "Mensaje de Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones,
+                    "Aceptar");
+            if (eleccion == JOptionPane.YES_OPTION) {
+                inicial = "true";
+            } else {
+                inicial = "false";
+            }
+            salida.write("\"inicial\":" + inicial + ",");
+            salida.newLine(); // Salto De Linea
+            transiciones = JOptionPane.showInputDialog("Introduce Las Transiciones De S" + i + " Seguido De la ',' Y ';' para la separacion: ");
+            salida.write("\"transiciones\":[" + transiciones + "]");
+            salida.newLine(); // Salto De Linea
+            salida.write("}");
+            if ((i + 1) != Estados) {
+                salida.append(',');
+            }
+        }
+    }
+
+    // Funcion Para Poner Las Transiciones
+    public void Transiciones(BufferedWriter salida) throws IOException {
+        int seguir = 0;
+        int otro = 0;
+        int nEstado = 1;
+        String Estado, Transicion;
+
+        while (seguir == 0) {
+            salida.newLine(); // Salto De Line
+            Estado = JOptionPane.showInputDialog("Ingrese El Estado: " + nEstado);
+            salida.write("\"" + Estado + "\":[");
+            // Comienza Un While De Trancisiones
+            while (otro == 0) {
+                Transicion = JOptionPane.showInputDialog("Ingrese La Transicion Para el Estado: " + Estado);
+                Object[] opciones1 = {"Si", "No"};
+                int eleccion1 = JOptionPane.showOptionDialog(null, "Desea Poner Otra Transicion??",
+                        "Mensaje de Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones1,
+                        "Aceptar");
+                if (eleccion1 == JOptionPane.YES_OPTION) {
+                    otro = 0;
+                    salida.append("\"" + Transicion + "\",");
+                } else {
+                    otro = 1;
+                    salida.append("\"" + Transicion + "\"");
+                }     
+            }
+            Object[] opciones2 = {"Si", "No"};
+            int eleccion2 = JOptionPane.showOptionDialog(null, "Desea Poner Otro Estado?",
+                    "Mensaje de Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones2,
+                    "Aceptar");
+            if (eleccion2 == JOptionPane.YES_OPTION) {
+                seguir = 0;
+            } else {
+                seguir = 1;
+            }
+            salida.write("],");
+            nEstado++;
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        btnGenerar = new javax.swing.JButton();
+        lblEntrada = new javax.swing.JLabel();
+        txtSimboloEntrada = new javax.swing.JTextField();
+        lblPila = new javax.swing.JLabel();
+        txtSimboloPila = new javax.swing.JTextField();
+        lblEstados = new javax.swing.JLabel();
+        txtEstados = new javax.swing.JTextField();
+        lblConfiguracion = new javax.swing.JLabel();
+        txtConfiguracion = new javax.swing.JTextField();
+        lblFondo = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnGenerar.setText("Generar");
+        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 314, -1, -1));
+
+        lblEntrada.setForeground(new java.awt.Color(255, 255, 255));
+        lblEntrada.setText("Ingrese Los  Simbolos De Entrada Separados  Por Espacio");
+        getContentPane().add(lblEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 48, 315, -1));
+
+        txtSimboloEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSimboloEntradaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtSimboloEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 68, 315, -1));
+
+        lblPila.setForeground(new java.awt.Color(255, 255, 255));
+        lblPila.setText("Ingrese Los Simbolos De La Pla Separados Por Espacio");
+        getContentPane().add(lblPila, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 106, 315, -1));
+
+        txtSimboloPila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSimboloPilaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtSimboloPila, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 126, 315, -1));
+
+        lblEstados.setForeground(new java.awt.Color(255, 255, 255));
+        lblEstados.setText("Ingrese El Numero De Estados");
+        getContentPane().add(lblEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 164, -1, -1));
+        getContentPane().add(txtEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 184, 315, -1));
+
+        lblConfiguracion.setForeground(new java.awt.Color(255, 255, 255));
+        lblConfiguracion.setText("Configuracion Inicial");
+        getContentPane().add(lblConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 145, -1));
+        getContentPane().add(txtConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 254, 315, -1));
+
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Blue.png"))); // NOI18N
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 360));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
+
+        //Plantilla para la generacion del automata
+        JFileChooser guardar = new JFileChooser();
+        guardar.setApproveButtonText("Guardar"); // Boton Para Guardar El Texto
+        guardar.showSaveDialog(null); // Abrir Ventana De Dialogo
+        File Archivo = new File(guardar.getSelectedFile() + ".txt"); //Crear El Archivo
+        int Estados = Integer.parseInt(txtEstados.getText()); // Capturamos El Texto De Estados
+        try {
+            BufferedWriter salida = new BufferedWriter(new FileWriter(Archivo)); // Crear Buffer De Escritura
+            salida.write("{");
+            salida.newLine(); // Salto De Linea
+            salida.write("\"Simbolos de entrada\":[" + simboloDeEntradayPila(txtSimboloEntrada.getText(), simboloEntrada) + "],");
+            salida.newLine(); // Salto De Linea
+            salida.write("\"Simbolos en la pila\":[" + simboloDeEntradayPila(txtSimboloPila.getText(), simboloSalida) + "],");
+            salida.newLine(); // Salto De Linea
+            salida.write("\"Estados\":[");
+            Estados(salida, Estados);
+            salida.newLine(); // Salto De Linea
+            salida.append("],");
+            salida.newLine(); // Salto De Linea
+            salida.write("\"Configuracion Inicial\":[" + simboloDeEntradayPila(txtConfiguracion.getText(), configuracionInicial) + "],");
+            salida.newLine(); // Salto De Linea
+            salida.append("\"Transiciones\":{");
+            Transiciones(salida);
+            salida.newLine(); // Salto De Linea
+            salida.append("}");
+            salida.newLine(); // Salto De Linea
+            salida.append("}");
+
+            salida.close();
+            
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void txtSimboloEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSimboloEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSimboloEntradaActionPerformed
+
+    private void txtSimboloPilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSimboloPilaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSimboloPilaActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerar;
+    private javax.swing.JLabel lblConfiguracion;
+    private javax.swing.JLabel lblEntrada;
+    private javax.swing.JLabel lblEstados;
+    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblPila;
+    private javax.swing.JTextField txtConfiguracion;
+    private javax.swing.JTextField txtEstados;
+    private javax.swing.JTextField txtSimboloEntrada;
+    private javax.swing.JTextField txtSimboloPila;
+    // End of variables declaration//GEN-END:variables
+}
