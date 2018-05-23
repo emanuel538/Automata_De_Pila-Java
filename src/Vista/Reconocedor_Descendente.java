@@ -8,11 +8,27 @@ package Vista;
 
 public class Reconocedor_Descendente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Reconocedor_Descendente
-     */
     public Reconocedor_Descendente() {
         initComponents();
+        bloquear();
+        String a = "1. A = aC\n"
+                +  "2. A = bBc\n"
+                +  "3. B = aA\n"
+                +  "4. B = bB\n"
+                +  "5. C = aCa\n"
+                +  "6. C = bBcc\n"
+                +  "7. C = |\n";
+        txtGeneral.setText(a);
+    }
+    
+    public void bloquear() {
+        //btnVerMatriz.setEnabled(false);
+        //btnGenerarHilera.setEnabled(false);
+    }
+
+    public void desbloquear() {
+        //btnVerMatriz.setEnabled(true);
+        //btnGenerarHilera.setEnabled(true);
     }
 
     /**
@@ -25,6 +41,7 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_Name = new javax.swing.JLabel();
+        txtGeneral = new java.awt.TextArea();
         lbl_Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -33,6 +50,7 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
 
         lbl_Name.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Reconocedor Descendente.png"))); // NOI18N
         getContentPane().add(lbl_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 780, 150));
+        getContentPane().add(txtGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 440, 270));
 
         lbl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Blue.png"))); // NOI18N
         getContentPane().add(lbl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 590));
@@ -44,5 +62,6 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lbl_Fondo;
     private javax.swing.JLabel lbl_Name;
+    private java.awt.TextArea txtGeneral;
     // End of variables declaration//GEN-END:variables
 }

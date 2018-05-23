@@ -82,7 +82,7 @@ public class Automata_De_Pila_Window extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 90, 40));
-        getContentPane().add(txtGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 450, 280));
+        getContentPane().add(txtGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 440, 270));
 
         txtpath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +119,7 @@ public class Automata_De_Pila_Window extends javax.swing.JFrame {
         getContentPane().add(lbl_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 600, 140));
 
         lbl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Blue.png"))); // NOI18N
-        getContentPane().add(lbl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 710));
+        getContentPane().add(lbl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 690, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
