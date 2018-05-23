@@ -5,12 +5,13 @@
  */
 package Control;
 
-import Vista.General_Window; // Importar Vista
+import Vista.General_Window; 
 
 public class Main {
+
     public static void main(String[] args) {
-     General_Window  gw = new General_Window(); // Declarar Ventana General
-     gw.setLocationRelativeTo(null); // Centrar ventana general
-     gw.setVisible(true);  // Mostrar Ventana General
+        General_Window Gw = new General_Window();
+        Gw.setLocationRelativeTo(null); // Centrar venta
+        Gw.setVisible(true);  // Mostrar Ventana General
     }
 }
