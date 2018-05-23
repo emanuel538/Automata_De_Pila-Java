@@ -55,7 +55,7 @@
     <Component class="java.awt.TextArea" name="txtGeneral">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="290" width="440" height="270"/>
+          <AbsoluteConstraints x="40" y="290" width="450" height="270"/>
         </Constraint>
       </Constraints>
     </Component>

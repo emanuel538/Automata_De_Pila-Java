@@ -5,8 +5,12 @@
  */
 package Vista;
 
+import Control.ArchivoC;
+import Control.Utilidades;
+
 
 public class Reconocedor_Descendente extends javax.swing.JFrame {
+    private ArchivoC archivo; // Creacion Del Archivo
 
     public Reconocedor_Descendente() {
         initComponents();
@@ -43,7 +47,7 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
         lbl_Name = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         txtGeneral = new java.awt.TextArea();
-        jTextField1 = new javax.swing.JTextField();
+        txtpath = new javax.swing.JTextField();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
         jToggleButton4 = new javax.swing.JToggleButton();
@@ -58,9 +62,15 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
         getContentPane().add(lbl_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 780, 150));
 
         jToggleButton1.setText("Cargar");
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 110, 40));
-        getContentPane().add(txtGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 440, 270));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 177, 370, 30));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 110, 30));
+        getContentPane().add(txtGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 500, 270));
+
+        txtpath.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpathActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtpath, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 370, 30));
 
         jToggleButton2.setText("Interactivo");
         getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 120, 50));
@@ -75,14 +85,19 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
         getContentPane().add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 110, 50));
 
         lbl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Blue.png"))); // NOI18N
-        getContentPane().add(lbl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 590));
+        getContentPane().add(lbl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpathActionPerformed
+        Utilidades UT = new Utilidades(); //Instancia De La Clase Utilidades
+        archivo = new ArchivoC(UT.cargar_Archivo(txtpath, txtGeneral)); // Ejecuat El Metodo Para Cargar El Archivo
+        desbloquear();
+    }//GEN-LAST:event_txtpathActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
@@ -91,5 +106,6 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_Fondo;
     private javax.swing.JLabel lbl_Name;
     private java.awt.TextArea txtGeneral;
+    private javax.swing.JTextField txtpath;
     // End of variables declaration//GEN-END:variables
 }
