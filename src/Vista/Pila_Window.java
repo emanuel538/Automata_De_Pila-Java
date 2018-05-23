@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
+
+/*
+Ventana Interactiva que muestra el manejo de la pila y sus iteracciones
+*/
+
 
 import Control.PanelDibujo;
 import Control.ProcesarIleraC;
@@ -19,10 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-/**
- *
- * @author elburi
- */
+
 public class Pila_Window extends JFrame {
 
     PanelDibujo panel;
