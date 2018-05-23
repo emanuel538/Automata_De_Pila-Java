@@ -1,8 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Generar La Matriz Del Automata De Pila
+*/
 package Vista;
 
 import Control.ArchivoC;
@@ -19,10 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Maraton
- */
+
 public class Ver_Matriz_Window extends javax.swing.JFrame {
 
     private ArchivoC archivo;
