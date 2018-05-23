@@ -5,7 +5,7 @@ import Control.Utilidades; // Importa Utilidades Del Controlador
 
 public class Automata_De_Pila_Window extends javax.swing.JFrame {
 
-    private ArchivoC archivo;
+    private ArchivoC archivo; // Creacion Del Archivo
 
     public Automata_De_Pila_Window() {
         initComponents();
