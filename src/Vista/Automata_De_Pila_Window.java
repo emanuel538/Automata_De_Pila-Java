@@ -63,7 +63,7 @@ public class Automata_De_Pila_Window extends javax.swing.JFrame {
         lbl_Name = new javax.swing.JLabel();
         lbl_Fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

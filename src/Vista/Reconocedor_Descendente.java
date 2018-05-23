@@ -41,16 +41,38 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_Name = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
         txtGeneral = new java.awt.TextArea();
+        jTextField1 = new javax.swing.JTextField();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
         lbl_Fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_Name.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Reconocedor Descendente.png"))); // NOI18N
         getContentPane().add(lbl_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 780, 150));
-        getContentPane().add(txtGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 440, 270));
+
+        jToggleButton1.setText("Cargar");
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 110, 40));
+        getContentPane().add(txtGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 440, 270));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 177, 370, 30));
+
+        jToggleButton2.setText("Interactivo");
+        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 120, 50));
+
+        jToggleButton3.setText("Generar  Matriz");
+        getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, -1, 50));
+
+        jToggleButton4.setText("Secuencia");
+        getContentPane().add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, 120, 50));
+
+        jToggleButton5.setText("Generar");
+        getContentPane().add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 110, 50));
 
         lbl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Blue.png"))); // NOI18N
         getContentPane().add(lbl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 590));
@@ -60,6 +82,12 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JLabel lbl_Fondo;
     private javax.swing.JLabel lbl_Name;
     private java.awt.TextArea txtGeneral;
