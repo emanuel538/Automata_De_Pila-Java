@@ -8,23 +8,23 @@ package Vista;
 import Control.ArchivoC;
 import Control.Utilidades;
 
-
 public class Reconocedor_Descendente extends javax.swing.JFrame {
+
     private ArchivoC archivo; // Creacion Del Archivo
 
     public Reconocedor_Descendente() {
         initComponents();
         bloquear();
         String a = "1. A = aC\n"
-                +  "2. A = bBc\n"
-                +  "3. B = aA\n"
-                +  "4. B = bB\n"
-                +  "5. C = aCa\n"
-                +  "6. C = bBcc\n"
-                +  "7. C = |\n";
+                + "2. A = bBc\n"
+                + "3. B = aA\n"
+                + "4. B = bB\n"
+                + "5. C = aCa\n"
+                + "6. C = bBcc\n"
+                + "7. C = |\n";
         txtGeneral.setText(a);
     }
-    
+
     public void bloquear() {
         //btnVerMatriz.setEnabled(false);
         //btnGenerarHilera.setEnabled(false);
@@ -62,6 +62,11 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
         getContentPane().add(lbl_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 780, 150));
 
         jToggleButton1.setText("Cargar");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 110, 30));
         getContentPane().add(txtGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 500, 270));
 
@@ -95,6 +100,12 @@ public class Reconocedor_Descendente extends javax.swing.JFrame {
         archivo = new ArchivoC(UT.cargar_Archivo(txtpath, txtGeneral)); // Ejecuat El Metodo Para Cargar El Archivo
         desbloquear();
     }//GEN-LAST:event_txtpathActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        Utilidades UT = new Utilidades(); //Instancia De La Clase Utilidades
+        UT.cargar_Archivo(txtpath, txtGeneral);
+    
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
